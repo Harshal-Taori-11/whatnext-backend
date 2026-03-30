@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS otp_verification (
     email VARCHAR(255) NOT NULL,
     otp VARCHAR(6) NOT NULL,
     expires_at TIMESTAMP NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    verified BOOLEAN DEFAULT FALSE  
 );
 
 -- Add indexes
