@@ -26,13 +26,12 @@ CREATE TABLE IF NOT EXISTS otp_verification (
     email VARCHAR(255) NOT NULL,
     otp VARCHAR(6) NOT NULL,
     expires_at TIMESTAMP NOT NULL,
-    verified BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_email (email),
-    INDEX idx_expires_at (expires_at)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Add indexes for better performance
+-- Add indexes
+CREATE INDEX idx_email ON otp_verification(email);
+CREATE INDEX idx_expires_at ON otp_verification(expires_at);
 CREATE INDEX IF NOT EXISTS idx_tasks_task_code ON tasks(task_code);
 CREATE INDEX IF NOT EXISTS idx_tasks_user_status ON tasks(user_id, status);
 CREATE INDEX IF NOT EXISTS idx_users_task_code ON users(task_code);
